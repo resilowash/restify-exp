@@ -1,0 +1,16 @@
+{
+  "name": "restify-exp",
+  "version": "1.0.0",
+  "description": "experimentation with restify",
+  "main": "index.js",
+  "dependencies": {
+    "moment": "^2.21.0",
+    "restify": "^6.3.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "r. silowash",
+  "license": "ISC"
+}
