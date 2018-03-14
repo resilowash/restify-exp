@@ -1,6 +1,6 @@
-let moment = require('moment');
-let Note = require('../lib/note');
-let EOL = require('os').EOL;
+const moment = require('moment');
+const Note = require('../lib/note');
+const EOL = require('os').EOL;
 const restify = require('restify');
 
 console.log("Current Date Time: ", moment().format('MMMM Do YYYY, h:mm:ss a'));
@@ -18,5 +18,7 @@ const createNote = (title, text, date) => {
 //let myNote = createNote('Test', 'This is text', null );
 
 let server = restify.createServer(); 
+
+server.post('/note', respond); 
 
 console.log("Your Note: %s Title - %s %s Text - %s %s Date - %s", EOL, myNote.title, EOL, myNote.text, EOL, myNote.date );
