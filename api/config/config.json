@@ -1,8 +1,8 @@
 {
   "note-controller" : {
-  "note-controller-url" : "http://localhost:4003/api/v1",
-  "note-controller-server" : "localhost",
-  "note-controller-port" : "4003",
-  "note-api-version" : "1"
-}
+    "url" : "http://localhost:4003/api/v1",
+    "server" : "localhost",
+    "port" : "4003",
+    "api-version" : "1"
+  }
 }
