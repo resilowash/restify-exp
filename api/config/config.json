@@ -4,5 +4,11 @@
   "server" : "localhost",
   "port" : "4003",
   "apiVersion" : "1"
+  },
+"database": {
+  "server" : "localhost",
+  "port" : 5432,
+  "user" : "",
+  "password" : "",
   }
 }
