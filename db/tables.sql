@@ -1,5 +1,0 @@
-
-
-create table note(
-
-)

@@ -1,5 +1,6 @@
 class Note {
-  constructor(title, text, date) {
+  constructor(guid, title, text, date) {
+    this.guid = guid; 
     this.title = title;
     this.text = text;
     this.date = date;
