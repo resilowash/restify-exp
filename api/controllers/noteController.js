@@ -14,7 +14,7 @@ const createNote = (title, text, date) => {
     //that does something really weird
     //date = moment().format('mm/dd/yyyy');
   }
-  let note = new Note(title, text, date);
+  let note = new Note(null, title, text, date);
   return note;
 }
 
@@ -24,11 +24,8 @@ server.use(restify.plugins.bodyParser());
 
 server.post('/note', (req, res, next) => {
   console.log('Note Post');
-  //console.log('request: ', req);
-    //let jsonBody = JSON.parse(req.body);
-  //console.log("Title: ", jsonBody.Title );
-  console.log('REquest body: ', req.body);
-  console.log('Request params: ', req.params);
+  let note = createNote(req.body.title, req.body.text, null);
+  console.log("Note Created: ", note);
   res.send(httpStatus.OK);
   return next();
 });

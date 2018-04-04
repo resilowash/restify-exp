@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fec525bb-e617-498e-839a-8cb7c3a576ea" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/api/controllers/noteController.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/noteController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,31 +19,19 @@
       <file leaf-file-name="noteController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/controllers/noteController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bodyParser.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/restify/lib/plugins/bodyParser.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1764" />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/restify/lib/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3368">
-              <caret line="380" selection-start-line="380" selection-end-line="380" />
+            <state relative-caret-position="405">
+              <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="note.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/lib/note.js">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="6" selection-start-column="6" selection-end-column="6" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -112,32 +98,6 @@
               <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="restify-exp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restify-exp" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restify-exp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restify-exp" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="restify" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restify-exp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restify-exp" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="restify" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restify-exp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restify-exp" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="restify" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -180,18 +140,18 @@
       <workItem from="1522612535077" duration="741000" />
       <workItem from="1522613288097" duration="1038000" />
       <workItem from="1522680068476" duration="1307000" />
-      <workItem from="1522795444080" duration="3660000" />
+      <workItem from="1522795444080" duration="4255000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6746000" />
+    <option name="totallyTimeSpent" value="7341000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="139" y="41" width="1400" height="930" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24142857" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24142857" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -199,7 +159,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32943925" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32943925" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -240,25 +200,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/lib/note.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/restify/lib/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3368">
+        <state relative-caret-position="3836">
           <caret line="380" selection-start-line="380" selection-end-line="380" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/restify/lib/plugins/bodyParser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1764" />
+        <state relative-caret-position="318">
+          <caret line="147" column="9" lean-forward="true" selection-start-line="147" selection-start-column="9" selection-end-line="147" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/lib/note.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers/noteController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+        <state relative-caret-position="405">
+          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
         </state>
       </provider>
     </entry>
