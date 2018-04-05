@@ -2,7 +2,7 @@ const {Client} = require('pg');
 const config = require('../config/config.json');
 
 
-class NoteDAL {
+class NoteDal {
     NoteDal() {
         const client = new Client({
             user: config.database.user, 
@@ -23,13 +23,18 @@ class NoteDAL {
         }
     }
 
-    createNewNote(note) {
+    async createNewNote(note) {
         let querytext = ('INSERT INTO note(guid, subject, notebody, datecreated)VALUES($1, $2, $3, $4)');
         values = [note.guid, note.title, note.text, note.date];
 
         try{
-          const resp =  await client.query(text, values); 
+          const resp =  await client.query(text, values);
+          return resp;
+        }
+        catch(e){
+          console.log(e);
         }
     }
-
 }
+
+module.exports = NoteDal;
