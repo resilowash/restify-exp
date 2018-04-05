@@ -3,8 +3,9 @@ const config = require('../config/config.json');
 
 
 class NoteDal {
-    NoteDal() {
-        const client = new Client({
+
+    constructor() {
+        this.client = new Client({
             user: config.database.user, 
             host: config.database.server,
             database: config.database.database,
@@ -13,22 +14,23 @@ class NoteDal {
         });
     }
 
-    connect() {
+    async connect() {
         try {
-            await client.connect(); 
-            return client; 
+            console.log("this client: ", this.client);
+            await this.client.connect();
         }
         catch(e) {
-            console.log("Error Connecting: ", e);
+            console.log("Error Connecting:  %s %s", this.client, e);
         }
     }
 
     async createNewNote(note) {
         let querytext = ('INSERT INTO note(guid, subject, notebody, datecreated)VALUES($1, $2, $3, $4)');
-        values = [note.guid, note.title, note.text, note.date];
+        const values = [note.guid, note.title, note.text, note.date];
 
         try{
-          const resp =  await client.query(text, values);
+          let client =  this.connect();
+          const resp =  await client.query(querytext, values);
           return resp;
         }
         catch(e){

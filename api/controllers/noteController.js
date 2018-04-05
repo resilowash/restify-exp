@@ -32,10 +32,8 @@ server.post('/note', (req, res, next) => {
   let note = createNote(req.body.title, req.body.text, null);
   console.log("Note Created: ", note);
 
-  //I don't necessarily like having the connect here
-  notedal.connect();
-
   let resp = notedal.createNewNote(note);
+  console.log('db resp: ', resp);
 
   res.send(httpStatus.OK);
   return next();
