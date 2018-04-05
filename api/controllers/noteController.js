@@ -23,19 +23,26 @@ const createNote = (title, text, date) => {
 let server = restify.createServer();
 server.use(restify.plugins.bodyParser());
 
-let notedal = new NoteDAL();
 
+server.post('/note', async(req, res, next) => {
+  //cannot reuse a client... so putting this here which is annoying because it loads config every time
+  let notedal = new NoteDAL();
 
-
-server.post('/note', (req, res, next) => {
   console.log('Note Post');
   let note = createNote(req.body.title, req.body.text, null);
   console.log("Note Created: ", note);
 
-  let resp = notedal.createNewNote(note);
-  console.log('db resp: ', resp);
+  let resp = await notedal.createNewNote(note);
+  //should always be one for this
+  console.log('Rows modified: ', resp.rowCount);
 
-  res.send(httpStatus.OK);
+  if(resp.rowCount !== 1) {
+      res.send(httpStatus.INTERNAL_SERVER_ERROR);
+  }
+  else {
+      res.send(httpStatus.OK);
+  }
+
   return next();
 });
 

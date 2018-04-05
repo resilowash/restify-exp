@@ -21,6 +21,7 @@ class NoteDal {
         try{
           this.client.connect();
           const resp =  await this.client.query(querytext, values);
+          await this.client.end();
           return resp;
         }
         catch(e){
