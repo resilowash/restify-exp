@@ -19,13 +19,13 @@ class NoteDal {
         const values = [note.guid, note.title, note.text, note.date];
 
         try{
-          this.client.connect();
+          await this.client.connect();
           const resp =  await this.client.query(querytext, values);
           await this.client.end();
           return resp;
         }
         catch(e){
-          console.log(e);
+          console.log('Failed in db', e);
         }
     }
 }

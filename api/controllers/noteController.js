@@ -25,25 +25,37 @@ server.use(restify.plugins.bodyParser());
 
 
 server.post('/note', async(req, res, next) => {
-  //cannot reuse a client... so putting this here which is annoying because it loads config every time
-  let notedal = new NoteDAL();
-
   console.log('Note Post');
   let note = createNote(req.body.title, req.body.text, null);
   console.log("Note Created: ", note);
+  try {
+      //cannot reuse a client... so putting this here which is annoying because it loads config every time
+      let notedal = new NoteDAL();
+      let resp = await notedal.createNewNote(note);
 
-  let resp = await notedal.createNewNote(note);
-  //should always be one for this
-  console.log('Rows modified: ', resp.rowCount);
+      if(resp != null) {
+          //should always be one for this
+          console.log('Rows modified: ', resp.rowCount);
 
-  if(resp.rowCount !== 1) {
+          if (resp.rowCount != 1) {
+              res.send(httpStatus.INTERNAL_SERVER_ERROR);
+          }
+          else {
+              res.send(httpStatus.OK);
+          }
+      }
+      else {
+          res.send(httpStatus.INTERNAL_SERVER_ERROR);
+      }
+      return next();
+  }
+  catch(e) {
+      console.log('an error has occured: ', e);
       res.send(httpStatus.INTERNAL_SERVER_ERROR);
   }
-  else {
-      res.send(httpStatus.OK);
-  }
 
-  return next();
+
+
 });
 
 server.listen(config.noteController.port, ()=>{
