@@ -28,6 +28,19 @@ class NoteDal {
           console.log('Failed in db', e);
         }
     }
+
+    async getAllNotes() {
+        let queryText = 'SELECT * FROM note';
+        try {
+            await this.client.connect();
+            let resp = await this.client.query(queryText);
+            await this.client.end();
+            return resp;
+        }
+        catch(e) {
+            console.log('Failed in db', e);
+        }
+    }
 }
 
 module.exports = NoteDal;
