@@ -1,17 +1,9 @@
-const {Client} = require('pg');
-const config = require('../config/config.json');
+const BaseDAL = require('./BaseDAL.js');
 
-
-class NoteDal {
+class NoteDal extends BaseDAL{
 
     constructor() {
-        this.client = new Client({
-            user: config.database.user, 
-            host: config.database.server,
-            database: config.database.database,
-            password: config.database.password,
-            port: config.database.port
-        });
+      super();
     }
 
     async createNewNote(note) {

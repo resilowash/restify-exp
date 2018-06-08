@@ -1,6 +1,6 @@
 const moment = require('moment');
-const Note = require('../lib/note');
-const NoteDAL = require('../model/noteDal');
+const User = require('../model/userModel.js');
+const UserDAL = require('../model/userDal');
 const EOL = require('os').EOL;
 const restify = require('restify');
 const config = require('../config/config.json');
@@ -8,31 +8,21 @@ const fs = require('fs');
 const httpStatus = require('http-status-codes');
 const uuidv4 = require('uuid/v4');
 
-console.log("NOTE API UP AND RUNNING : Current Date Time: ", moment().format('MMMM Do YYYY, h:mm:ss a'));
-
-//This should probably go into business logic.
-const createNote = (title, text, date) => {
-  if(date == null) {
-    date = moment().format('MM/DD/YYYY');
-    //that does something really weird
-    //date = moment().format('mm/dd/yyyy');
-  }
-  let note = new Note(uuidv4(), title, text, date);
-  return note;
-}
+console.log("USER API UP AND RUNNING : Current Date Time: ", moment().format('MMMM Do YYYY, h:mm:ss a'));
 
 let server = restify.createServer();
 server.use(restify.plugins.bodyParser());
 
 
-server.post('api/v' + config.noteController.apiVersion + '/note', async(req, res, next) => {
-  console.log('Note Post');
-  let note = createNote(req.body.title, req.body.text, null);
-  console.log("Note Created: ", note);
+server.post('api/v' + config.userController.apiVersion + '/user', async(req, res, next) => {
+  console.log('User Post');
+  let timeCreated = moment().format("MMMM Do YYYY, hh:mm:ss");
+  let user = new User(uuidv4(), req.body.email, req.body.username, req.body.password, "mmmmm...salt", timeCreated );
+
   try {
       //cannot reuse a client... so putting this here which is annoying because it loads config every time
-      let notedal = new NoteDAL();
-      let resp = await notedal.createNewNote(note);
+      let userdal = new UserDAL();
+      let resp = await userdal.createUser(note);
 
       if(resp != null) {
           //should always be one for this
@@ -59,7 +49,6 @@ server.post('api/v' + config.noteController.apiVersion + '/note', async(req, res
 
 });
 
-server.listen(config.noteController.port, ()=>{
+server.listen(config.userController.port, ()=>{
   console.log('Ready on %s', server.url);
 });
-//console.log("Your Note: %s Title - %s %s Text - %s %s Date - %s", EOL, myNote.title, EOL, myNote.text, EOL, myNote.date );
