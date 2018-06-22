@@ -76,6 +76,14 @@ server.get('/note', async(req, res, next) => {
     }
 });
 
+// Generic requests/blank routes
+server.get('/', function(req, res) {
+    res.json({message: 'Welcome to RESTify Note API'});
+});
+server.post('/', function(req, res) {
+    res.json({message: 'Welcome to RESTify Note API'});
+});
+
 
 server.listen(config.noteController.port, ()=>{
   console.log('Ready on %s', server.url);
