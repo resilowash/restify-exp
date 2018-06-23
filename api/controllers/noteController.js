@@ -8,8 +8,9 @@ const fs = require('fs');
 const httpStatus = require('http-status-codes');
 const uuidv4 = require('uuid/v4');
 
-console.log("Current Date Time: ", moment().format('MMMM Do YYYY, h:mm:ss a'));
+console.log("NOTE API UP AND RUNNING : Current Date Time: ", moment().format('MMMM Do YYYY, h:mm:ss a'));
 
+//This should probably go into business logic.
 const createNote = (title, text, date) => {
   if(date == null) {
     date = moment().format('MM/DD/YYYY');
@@ -24,7 +25,7 @@ let server = restify.createServer();
 server.use(restify.plugins.bodyParser());
 
 
-server.post('/note', async(req, res, next) => {
+server.post('api/v' + config.noteController.apiVersion + '/note', async(req, res, next) => {
   console.log('Note Post');
   let note = createNote(req.body.title, req.body.text, null);
 
