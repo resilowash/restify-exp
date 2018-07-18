@@ -1,6 +1,6 @@
 const BaseDAL = require('./BaseDAL.js');
 
-class UserDAL extends BaseDAL {
+class UserDal extends BaseDAL {
   constructor() {
     super();
   }
@@ -36,6 +36,8 @@ class UserDAL extends BaseDAL {
   }
 
   async getUserDetails(id) {
-    let querytext = ('SELECT * FROM note_user'); 
+    let querytext = ('SELECT * FROM note_user');
   }
 }
+
+module.exports = UserDal; 

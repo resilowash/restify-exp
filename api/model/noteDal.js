@@ -20,6 +20,28 @@ class NoteDal extends BaseDAL{
           console.log('Failed in db', e);
         }
     }
+
+    async updateNote(note) {
+        let querytext = ('UPDATE note SET subject = $1, notebody = $2 WHERE guid = $3');
+        const values = [note.title, note.text, note.guid];
+
+        try{
+          await this.client.connect();
+          const resp =  await this.client.query(querytext, values);
+          await this.client.end();
+          return resp;
+        }
+        catch(e){
+          console.log('Failed in db', e);
+        }
+    }
+
+    async getNoteDetails(id) {
+      let querytext = 'SELECT * FROM note WHERE id = $1';
+      const values = [id];
+
+
+    }
 }
 
 module.exports = NoteDal;
