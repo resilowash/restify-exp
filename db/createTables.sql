@@ -2,7 +2,7 @@
 
 create database notedb;
 
-create table note(
+create table noteuser(
   id SERIAL PRIMARY KEY,
   guid varchar(50) UNIQUE,
   subject varchar(200),
@@ -10,6 +10,14 @@ create table note(
   datecreated date
 );
 
+<<<<<<< HEAD
+create table user(
+    id SERIAL PRIMARY KEY,
+    guid varchar(50) UNIQUE,
+    user_name varchar(20) UNIQUE not null,
+    salt varchar(250),
+    pw varchar(250)
+=======
 create table note_user(
   id SERIAL PRIMARY KEY,
   guid varchar(50) UNIQUE,
@@ -26,4 +34,5 @@ create table user_token(
   token varchar(200) not null,
   dateTimeCreated timestamp,
   dateTimeExpires timestamp
+>>>>>>> 751f92cbf4b8babc7f814c8cd001b4ac3247fc41
 );

@@ -28,7 +28,7 @@ server.use(restify.plugins.bodyParser());
 server.post('api/v' + config.noteController.apiVersion + '/note', async(req, res, next) => {
   console.log('Note Post');
   let note = createNote(req.body.title, req.body.text, null);
-  console.log("Note Created: ", note);
+
   try {
       //cannot reuse a client... so putting this here which is annoying because it loads config every time
       let notedal = new NoteDAL();
@@ -42,6 +42,7 @@ server.post('api/v' + config.noteController.apiVersion + '/note', async(req, res
               res.send(httpStatus.INTERNAL_SERVER_ERROR);
           }
           else {
+              console.log("Note Created: ", note);
               res.send(httpStatus.OK);
           }
       }
@@ -54,10 +55,36 @@ server.post('api/v' + config.noteController.apiVersion + '/note', async(req, res
       console.log('an error has occured: ', e);
       res.send(httpStatus.INTERNAL_SERVER_ERROR);
   }
-
-
-
 });
+
+server.get('/note', async(req, res, next) => {
+    console.log('Get All Notes Request');
+    try {
+        let notedal = new NoteDAL();
+        let resp = await notedal.getAllNotes();
+        if(resp != null) {
+            res.send(httpStatus.OK, resp.rows);
+        }
+        else {
+            res.send(httpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return next();
+
+    }
+    catch(e) {
+        console.log('An Error has occured: ', e);
+        res.send(httpStatus.INTERNAL_SERVER_ERROR);
+    }
+});
+
+// Generic requests/blank routes
+server.get('/', function(req, res) {
+    res.json({message: 'Welcome to RESTify Note API'});
+});
+server.post('/', function(req, res) {
+    res.json({message: 'Welcome to RESTify Note API'});
+});
+
 
 server.listen(config.noteController.port, ()=>{
   console.log('Ready on %s', server.url);
