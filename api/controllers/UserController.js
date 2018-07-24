@@ -62,7 +62,8 @@ server.post('api/v' + config.userController.apiVersion + '/user/auth', async (re
     console.log('USER AUTHENTICATION');
 
     try {
-        passwordbll.authenticate(req.username, req.password);
+        console.log('User name: ', req.body.username);
+        await passwordbll.authenticate(req.body.username, req.body.password);
     }
     catch (e) {
         console.log('ERROR IN AUTH: ', e);

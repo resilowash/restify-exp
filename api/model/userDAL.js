@@ -39,15 +39,16 @@ class UserDal extends BaseDAL {
     let querytext = ('SELECT * FROM note_user');
   }
 
-  async getUserSalt(userName) {
+  async getUserSalt(username) {
     let querytext = ('SELECT pwsalt from note_user WHERE username = $1');
     const values = [username];
 
     try {
       await this.client.connect();
       const resp = await this.client.query(querytext, values);
+      console.log('Rows : ', resp.rows);
       await this.client.end();
-      return resp;
+      return resp.rows;
     }
     catch (e) {
       console.log('Failed to fetch User', e);

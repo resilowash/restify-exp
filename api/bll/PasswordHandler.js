@@ -1,3 +1,10 @@
+/**
+ * This is basically a FACADE pattern style of abstracting away the data layer and allowing business logic to be handled in a new layer instead
+ * of the controller or data access layer handling it.  
+ * 
+ * Author: R. Silowash 
+ * Date: July 2018 
+**/
 const bcrypt = require('bcrypt');
 const UserDAL = require('../model/UserDAL');
 
@@ -12,22 +19,37 @@ module.exports.hashPassword = async function hashPassword(textSalt, textPassword
     return password;
 }
 
+/// generates the salt using bcrypt 
+/// @return {String} bcrypt salt string 
 module.exports.getSalt = async function getSalt() {
     return bcrypt.genSaltSync(10);
 }
 
 /// take the given password, grab the user's salt, hash both, compare to database, if good issue token if not return null
-/// @param {String} password plain text password entered by user 
 /// @param {String} username the username for the user that is logging in
+/// @param {String} password plain text password entered by user 
 /// @return {String} token or null 
-module.exports.authenticate = async function authenticate(username, password) {
+module.exports.authenticate = async (username, password) => {
 
     try {
+        console.log('Params in authenticate username: %s password: %s', username, password);
         let userdal = new UserDAL();
-        let salt = userdal.getUserSalt(username);
+        let salt = await this.getSaltForUser(username);
         console.log("USER Salt for %s is %s", username, salt);
     }
     catch (e) {
         console.log("ISSUE IN AUTHENTICATE: ", e);
     }
+}
+
+/// Take the given username and get the user's salt 
+/// @param {String} username is the username to get salt from db for
+/// @return {String} pwsalt fpassword salt stored in data storage 
+module.exports.getSaltForUser = async function getSaltForUser(username) {
+    let userdal = new UserDAL();
+    //should only ever return one record  
+    let rows = await userdal.getUserSalt(username);
+    let pwsalt = rows[0].pwsalt;
+    console.log("Password SALT -> getSaltForUser : ", pwsalt);
+    return pwsalt;
 }
