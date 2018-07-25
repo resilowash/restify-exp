@@ -56,6 +56,24 @@ class UserDal extends BaseDAL {
       return error;
     }
   }
+
+  async getUserPassword(username) {
+    let querytext = ('SELECT password from note_user WHERE username = $1');
+    const values = [username];
+
+    try {
+      await this.client.connect();
+      const resp = await this.client.query(querytext, values);
+      console.log('Rows : ', resp.rows);
+      await this.client.end();
+      return resp.rows;
+    }
+    catch (e) {
+      console.log('Failed to fetch pw', e);
+      let error = { text: "Failed to Fetch user based on id provided or user has never logged in", stacktrace: e };
+      return error;
+    }
+  }
 }
 
 module.exports = UserDal; 

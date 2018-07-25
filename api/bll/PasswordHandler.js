@@ -36,6 +36,11 @@ module.exports.authenticate = async (username, password) => {
         let userdal = new UserDAL();
         let salt = await this.getSaltForUser(username);
         console.log("USER Salt for %s is %s", username, salt);
+        let hashedPass = await this.hashPassword(salt, password);
+        //let userPass = await this.getPasswordForUser(username);
+        let match = bcrypt.compareSync(password, hashedPass);
+        console.log("Authentication match: ", match);
+
     }
     catch (e) {
         console.log("ISSUE IN AUTHENTICATE: ", e);
@@ -52,4 +57,14 @@ module.exports.getSaltForUser = async function getSaltForUser(username) {
     let pwsalt = rows[0].pwsalt;
     console.log("Password SALT -> getSaltForUser : ", pwsalt);
     return pwsalt;
+}
+
+module.exports.getPasswordForUser = async function getPasswordForUser(username) {
+    let userdal = new UserDAL();
+    let rows = await userdal.getUserPassword(username);
+    let password = rows[0].password;
+    //security risk logging on server side password AHHHHH
+    console.log("user password is: ", password);
+
+    return password;
 }
